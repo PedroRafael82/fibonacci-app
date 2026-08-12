@@ -5,6 +5,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
+@Service
 public class FibonacciService {
 
     private final List<BigInteger> cache = new ArrayList<>(Arrays.asList(BigInteger.ZERO, BigInteger.ONE));
@@ -25,6 +28,10 @@ public class FibonacciService {
         }
 
         return cache.get(n);
+    }
+
+    public boolean isCached(int n) {
+        return n >= 0 && n < cache.size();
     }
 
     int getCacheSize() {

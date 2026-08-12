@@ -1,2 +1,3 @@
 /home/pedro/Desktop/fibonacci-app/fibonacci-app/backend/src/test/java/com/pedro/backend/BackendApplicationTests.java
+/home/pedro/Desktop/fibonacci-app/fibonacci-app/backend/src/test/java/com/pedro/backend/controller/FibonacciControllerTest.java
 /home/pedro/Desktop/fibonacci-app/fibonacci-app/backend/src/test/java/com/pedro/backend/service/FibonacciServiceTest.java
