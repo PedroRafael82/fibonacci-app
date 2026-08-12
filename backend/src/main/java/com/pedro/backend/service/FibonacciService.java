@@ -1,30 +1,37 @@
 package com.pedro.backend.service;
 
 import java.math.BigInteger;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class FibonacciService {
+
+    private final List<BigInteger> cache = new ArrayList<>(Arrays.asList(BigInteger.ZERO, BigInteger.ONE));
 
     public BigInteger calcular(int n) {
         if (n < 0) {
             throw new IllegalArgumentException("N must be positive or zero.");
         }
 
-        if (n == 0) {
-            return BigInteger.ZERO;
-        }
-        if (n == 1) {
-            return BigInteger.ONE;
+        if (n < cache.size()) {
+            return cache.get(n);
         }
 
-        BigInteger anterior = BigInteger.ZERO;
-        BigInteger atual = BigInteger.ONE;
-
-        for (int i = 2; i <= n; i++) {
-            BigInteger seguinte = anterior.add(atual);
-            anterior = atual;
-            atual = seguinte;
+        for (int i = cache.size(); i <= n; i++) {
+            BigInteger anterior = cache.get(i - 2);
+            BigInteger atual = cache.get(i - 1);
+            cache.add(anterior.add(atual));
         }
 
-        return atual;
+        return cache.get(n);
+    }
+
+    int getCacheSize() {
+        return cache.size();
+    }
+
+    BigInteger getCacheValue(int index) {
+        return cache.get(index);
     }
 }

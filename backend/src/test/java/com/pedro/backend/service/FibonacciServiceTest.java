@@ -12,6 +12,13 @@ class FibonacciServiceTest {
     private final FibonacciService service = new FibonacciService();
 
     @Test
+    void shouldStartWithBaseCacheValues() {
+        assertEquals(2, service.getCacheSize());
+        assertEquals(BigInteger.ZERO, service.getCacheValue(0));
+        assertEquals(BigInteger.ONE, service.getCacheValue(1));
+    }
+
+    @Test
     void shouldReturnZeroForZero() {
         assertEquals(BigInteger.ZERO, service.calcular(0));
     }
@@ -44,6 +51,25 @@ class FibonacciServiceTest {
     @Test
     void shouldReturnLargeValueForOneHundred() {
         assertEquals(new BigInteger("354224848179261915075"), service.calcular(100));
+    }
+
+    @Test
+    void shouldNotExpandCacheWhenRequestingAlreadyCachedValue() {
+        service.calcular(100);
+        assertEquals(101, service.getCacheSize());
+
+        service.calcular(20);
+        assertEquals(101, service.getCacheSize());
+        assertEquals(BigInteger.valueOf(6765), service.getCacheValue(20));
+    }
+
+    @Test
+    void shouldExpandCacheOnlyForMissingValues() {
+        service.calcular(100);
+        service.calcular(105);
+
+        assertEquals(106, service.getCacheSize());
+        assertEquals(new BigInteger("3928413764606871165730"), service.getCacheValue(105));
     }
 
     @Test
