@@ -13,8 +13,8 @@ public class FibonacciService {
     private final List<BigInteger> cache = new ArrayList<>(Arrays.asList(BigInteger.ZERO, BigInteger.ONE));
 
     public BigInteger calcular(int n) {
-        if (n < 0) {
-            throw new IllegalArgumentException("N must be positive or zero.");
+        if (n < 0 || n > 10000) {
+            throw new IllegalArgumentException("N must be a positive integer not exceeding 10000.");
         }
 
         if (n < cache.size()) {
