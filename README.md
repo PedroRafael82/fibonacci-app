@@ -111,3 +111,27 @@ body containing `status`, `error`, and `message`.
 Reason:
 Centralizes error mapping and keeps controllers free of try/catch blocks for
 expected validation errors.
+
+
+## Docker
+
+Decision: containerize backend and frontend separately and orchestrate with Docker Compose.
+
+Run the full application:
+
+```bash
+docker compose up --build
+```
+
+Frontend: http://localhost:3000
+
+Backend: http://localhost:8080
+
+Swagger UI: http://localhost:8080/swagger-ui/index.html
+
+Notes:
+- The backend Dockerfile uses a multi-stage build: `maven:3.9.6-eclipse-temurin-21` to build and `eclipse-temurin:21-jre` for runtime. For faster image builds the Maven package step in the image currently skips running tests (`-DskipTests`) because tests should be executed locally/CI before building images. Tests were executed during local validation and passed.
+- The frontend Dockerfile builds the static assets with `node:18-alpine` and serves them with `nginx:1.26-alpine`.
+- CORS: the backend allows origins `http://localhost:5173` (Vite dev) and `http://localhost:3000` (frontend served from Docker). This keeps dev workflow and Docker workflow working while not opening wildcard origins.
+- The in-memory cache is not persisted; restarting the backend container clears the cache (expected behavior).
+
