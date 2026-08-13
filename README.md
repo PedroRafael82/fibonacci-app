@@ -38,10 +38,10 @@ The user enters an index `n` and receives the corresponding Fibonacci value `F(n
 
 ```mermaid
 flowchart LR
-    Browser[Browser] --> Frontend[React + TypeScript frontend]
-    Frontend -->|HTTP GET /api/fibonacci/{n}| Backend[Spring Boot REST API]
-    Backend --> Service[FibonacciService]
-    Service --> Cache[In-memory cache List<BigInteger>]
+    Browser["Browser"] --> Frontend["React + TypeScript frontend"]
+    Frontend -->|"HTTP GET /api/fibonacci/{n}"| Backend["Spring Boot REST API"]
+    Backend --> Service["FibonacciService"]
+    Service --> Cache["In-memory cache List&lt;BigInteger&gt;"]
 ```
 
 At runtime the frontend runs as a static app served by nginx in a container, while the backend runs as a Spring Boot application in its own container. Both services are exposed on different ports so they can be used independently and together through Docker Compose.
