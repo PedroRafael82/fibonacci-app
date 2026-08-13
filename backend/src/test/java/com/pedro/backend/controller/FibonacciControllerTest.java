@@ -69,6 +69,6 @@ class FibonacciControllerTest {
         mvc.perform(get("/api/fibonacci/-1"))
             .andExpect(status().isBadRequest())
             .andExpect(jsonPath("$.status").value(400))
-            .andExpect(jsonPath("$.message").value("N must be positive or zero."));
+            .andExpect(jsonPath("$.message").value("N must be a positive integer not exceeding 10000."));
     }
 }

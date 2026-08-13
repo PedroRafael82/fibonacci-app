@@ -1,0 +1,3 @@
+com/pedro/backend/BackendApplicationTests.class
+com/pedro/backend/service/FibonacciServiceTest.class
+com/pedro/backend/controller/FibonacciControllerTest.class

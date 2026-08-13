@@ -1,5 +1,6 @@
 /home/pedro/Desktop/fibonacci-app/fibonacci-app/backend/src/main/java/com/pedro/backend/BackendApplication.java
 /home/pedro/Desktop/fibonacci-app/fibonacci-app/backend/src/main/java/com/pedro/backend/config/CorsConfig.java
+/home/pedro/Desktop/fibonacci-app/fibonacci-app/backend/src/main/java/com/pedro/backend/config/OpenApiConfig.java
 /home/pedro/Desktop/fibonacci-app/fibonacci-app/backend/src/main/java/com/pedro/backend/controller/FibonacciController.java
 /home/pedro/Desktop/fibonacci-app/fibonacci-app/backend/src/main/java/com/pedro/backend/dto/ApiErrorResponse.java
 /home/pedro/Desktop/fibonacci-app/fibonacci-app/backend/src/main/java/com/pedro/backend/dto/FibonacciResponse.java
